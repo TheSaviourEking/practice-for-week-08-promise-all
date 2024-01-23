@@ -27,11 +27,15 @@ function liftWeights() {
 
 function workout() {
   // refactor this code to use Promise.all
-  stretch()
-    .then(runOnTreadmill)
-    .then(liftWeights)
-    .then(() => console.log("done working out"))
-    .catch((err) => console.log(err));
+  // stretch()
+  //   .then(runOnTreadmill)
+  //   .then(liftWeights)
+  //   .then(() => console.log("done working out"))
+  //   .catch((err) => console.log(err));
+
+  Promise.all([stretch(), runOnTreadmill(), liftWeights()])
+    .then(() => console.log('done working out'))
+    .catch(error => console.error(error))
 }
 
 
@@ -43,8 +47,8 @@ output.
 
 
 workout();
-  // should print out the following:
-    // done running on treadmill
-    // done stretching
-    // done lifting weights
-    // done working out
+// should print out the following:
+// done running on treadmill
+// done stretching
+// done lifting weights
+// done working out
